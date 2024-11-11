@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generador de Códigos QR profesionales para enlaces, redes sociales, correos electrónicos, imágenes y más.">
+    <meta name="description" content="Generador de Códigos QR para enlaces, correos, redes sociales y más. ¡Genera QR de forma profesional!">
     <meta name="author" content="Tu Nombre">
     <title>Generador de Códigos QR Profesional</title>
     <link rel="stylesheet" href="styles.css">
@@ -15,7 +15,6 @@
             <div class="logo">QR Generator</div>
             <ul class="nav-links">
                 <li><a href="#home">Inicio</a></li>
-                <li><a href="#features">Características</a></li>
                 <li><a href="#about">Acerca de</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
@@ -24,16 +23,16 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Genera Códigos QR de Forma Profesional</h1>
-            <p>Genera códigos QR para enlaces, redes sociales, correos electrónicos, imágenes y más en pocos clics.</p>
-            <button onclick="document.getElementById('qr-generator').scrollIntoView()">Generar Código QR</button>
+            <h1>Genera tu Código QR Profesionalmente</h1>
+            <p>Genera códigos QR para enlaces, redes sociales, correos, imágenes y mucho más en pocos clics.</p>
+            <button onclick="document.getElementById('qr-generator').scrollIntoView()">Generar QR</button>
         </div>
     </section>
 
     <section id="qr-generator" class="qr-generator">
         <h2>Crea tu Código QR</h2>
         <form id="qr-form">
-            <input type="text" id="input-text" placeholder="Ingresa tu URL o dato" required>
+            <input type="text" id="input-text" placeholder="Ingresa el enlace o dato" required>
             <select id="qr-type">
                 <option value="url">Enlace Web</option>
                 <option value="email">Correo Electrónico</option>
@@ -43,24 +42,13 @@
             </select>
             <button type="submit">Generar QR</button>
         </form>
-        <div id="qr-code-container"></div>
-        <a id="download-btn" style="display: none;" download="qr-code.png" href="#">Descargar QR</a>
-    </section>
 
-    <section id="features" class="features">
-        <h2>Características</h2>
-        <div class="feature">
-            <h3>Generador de Códigos QR Flexibles</h3>
-            <p>Genera QR para enlaces web, correos, textos, redes sociales y mucho más.</p>
+        <div id="qr-code-container" class="qr-code-container"></div>
+        <div id="qr-actions" style="display: none;">
+            <a id="download-btn" class="btn" href="#" download="qr-code.png">Descargar QR</a>
+            <a id="view-btn" class="btn" href="#" target="_blank">Ver en Pantalla Completa</a>
         </div>
-        <div class="feature">
-            <h3>Interfaz Intuitiva</h3>
-            <p>Una interfaz limpia y fácil de usar, sin complicaciones.</p>
-        </div>
-        <div class="feature">
-            <h3>Sin API Externa</h3>
-            <p>Todo el procesamiento se hace dentro de la página, sin necesidad de dependencias externas.</p>
-        </div>
+        <p id="error-message" style="color: red; display: none;">Hubo un error al generar el código QR.</p>
     </section>
 
     <footer>

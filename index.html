@@ -1,30 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generador de Códigos QR para enlaces, correos, redes sociales y más. ¡Genera QR de forma profesional!">
     <meta name="author" content="Tu Nombre">
     <title>Generador de Códigos QR Profesional</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- QR Code JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+    <style>
+        /* General resets and box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, #ff8c00, #ff0080);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #ff0080;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        .hero button:hover {
+            background-color: #ff8c00;
+        }
+
+        /* QR Generator Section */
+        .qr-generator {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .qr-generator h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .qr-generator form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .qr-generator input,
+        .qr-generator select,
+        .qr-generator input[type="color"] {
+            padding: 12px;
+            margin: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .qr-generator input:focus,
+        .qr-generator select:focus,
+        .qr-generator input[type="color"]:focus {
+            border-color: #ff0080;
+        }
+
+        .qr-generator button {
+            padding: 12px 30px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .qr-generator button:hover {
+            background-color: #218838;
+        }
+
+        /* QR Code Display */
+        .qr-code-container {
+            margin-top: 30px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .qr-code-container canvas {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
+            max-width: 100%;
+        }
+
+        /* Actions after QR Generation */
+        #qr-actions {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #download-btn,
+        #view-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        #download-btn:hover,
+        #view-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Error message */
+        #error-message {
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+            display: none;
+            margin-top: 20px;
+        }
+
+        /* Loading indicator */
+        #loading {
+            display: none;
+            color: #ff0080;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer .social-links a:hover {
+            color: #ffd700;
+        }
+    </style>
 </head>
+
 <body>
+
     <header>
-        <nav class="navbar">
-            <div class="logo">QR Generator</div>
-            <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Acerca de</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="logo">QR Generator</div>
     </header>
 
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="hero-content">
             <h1>Genera tu Código QR Profesionalmente</h1>
-            <p>Genera códigos QR para enlaces, redes sociales, correos, imágenes y mucho más en pocos clics.</p>
+            <p>Genera códigos QR para enlaces, redes sociales, correos, imágenes y más en pocos clics.</p>
             <button onclick="document.getElementById('qr-generator').scrollIntoView()">Generar QR</button>
         </div>
     </section>
@@ -40,15 +218,26 @@
                 <option value="social">Redes Sociales</option>
                 <option value="image">Imagen</option>
             </select>
+            <label for="qr-color">Color del QR:</label>
+            <input type="color" id="qr-color" value="#000000">
+            <label for="qr-size">Tamaño del QR:</label>
+            <select id="qr-size">
+                <option value="200">Pequeño</option>
+                <option value="250" selected>Mediano</option>
+                <option value="300">Grande</option>
+            </select>
             <button type="submit">Generar QR</button>
         </form>
 
+        <div id="loading">Generando Código QR...</div>
         <div id="qr-code-container" class="qr-code-container"></div>
-        <div id="qr-actions" style="display: none;">
-            <a id="download-btn" class="btn" href="#" download="qr-code.png">Descargar QR</a>
-            <a id="view-btn" class="btn" href="#" target="_blank">Ver en Pantalla Completa</a>
+
+        <div id="qr-actions">
+            <a id="download-btn" href="#" download="qr-code.png">Descargar QR</a>
+            <a id="view-btn" href="#" target="_blank">Ver en Pantalla Completa</a>
         </div>
-        <p id="error-message" style="color: red; display: none;">Hubo un error al generar el código QR.</p>
+
+        <p id="error-message">Hubo un error al generar el código QR.</p>
     </section>
 
     <footer>
@@ -62,6 +251,78 @@
         </div>
     </footer>
 
-    <script src="app.js"></script>
+    <script>
+        // Función para generar el código QR
+        function generateQRCode(data, qrSize, qrColor) {
+            return new Promise((resolve, reject) => {
+                QRCode.toCanvas(data, {
+                    width: qrSize,
+                    height: qrSize,
+                    color: { dark: qrColor, light: '#ffffff' }
+                }, (error, canvas) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(canvas);
+                    }
+                });
+            });
+        }
+
+        // Manejo del formulario de QR
+        document.getElementById('qr-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const inputText = document.getElementById('input-text').value.trim();
+            const qrType = document.getElementById('qr-type').value;
+            const qrColor = document.getElementById('qr-color').value;
+            const qrSize = parseInt(document.getElementById('qr-size').value);
+            const qrCodeContainer = document.getElementById('qr-code-container');
+            const downloadButton = document.getElementById('download-btn');
+            const viewButton = document.getElementById('view-btn');
+            const errorMessage = document.getElementById('error-message');
+            const qrActions = document.getElementById('qr-actions');
+            const loadingMessage = document.getElementById('loading');
+
+            // Limpiar el estado previo
+            errorMessage.style.display = 'none';
+            qrCodeContainer.innerHTML = '';
+            qrActions.style.display = 'none';
+            loadingMessage.style.display = 'block';
+
+            // Validación de la entrada
+            if (!inputText) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Por favor, ingresa un valor válido.';
+                loadingMessage.style.display = 'none';
+                return;
+            }
+
+            // Formatear entrada según el tipo de QR
+            let data = inputText;
+            if (qrType === 'email') data = `mailto:${inputText}`;
+            else if (qrType === 'social') data = `https://www.${inputText}.com`;
+            else if (qrType === 'image') data = `http://example.com/${inputText}.jpg`;
+
+            // Generar el QR
+            generateQRCode(data, qrSize, qrColor)
+                .then(canvas => {
+                    // Mostrar QR y botones
+                    qrCodeContainer.appendChild(canvas);
+                    downloadButton.href = canvas.toDataURL('image/png');
+                    viewButton.href = canvas.toDataURL('image/png');
+                    qrActions.style.display = 'block';
+                    loadingMessage.style.display = 'none';
+                })
+                .catch(error => {
+                    // Mostrar error si algo falla
+                    loadingMessage.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                    errorMessage.textContent = 'Hubo un error al generar el código QR.';
+                });
+        });
+    </script>
+
 </body>
+
 </html>

@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name='admaven-placement' content=Bqdr6rTgF>
-    <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1118319"></script>
-    <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1118321"></script>
-    
-    <meta name="description" content="Generador de Códigos QR para enlaces, correos, redes sociales y más. ¡Genera QR de forma profesional!">
+    <meta name="description" content="Generador de Códigos QR para enlaces, correos, redes sociales y más. ¡Genera QR de forma profesional y úsalo en múltiples plataformas de forma fácil y rápida!">
     <meta name="author" content="Tu Nombre">
     <title>Generador de Códigos QR Profesional</title>
+    
+    <!-- AdMaven Ads -->
+    <meta name="admaven-placement" content="Bqdr6rTgF">
+    <script data-cfasync="false" src="/sw.js"></script>
+    <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1118319"></script>
+    <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1118321"></script>
 
     <!-- QR Code JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
@@ -44,13 +45,13 @@
         .hero {
             background: linear-gradient(45deg, #ff8c00, #ff0080);
             color: white;
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
@@ -58,8 +59,8 @@
             background-color: #ff0080;
             color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 18px;
+            padding: 10px 25px;
+            font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
             border-radius: 5px;
@@ -71,17 +72,17 @@
 
         /* QR Generator Section */
         .qr-generator {
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .qr-generator h2 {
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .qr-generator form {
@@ -93,31 +94,25 @@
         .qr-generator input,
         .qr-generator select,
         .qr-generator input[type="color"] {
-            padding: 12px;
-            margin: 10px;
+            padding: 10px;
+            margin: 8px;
             width: 80%;
             max-width: 400px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 14px;
             transition: border 0.3s;
         }
 
-        .qr-generator input:focus,
-        .qr-generator select:focus,
-        .qr-generator input[type="color"]:focus {
-            border-color: #ff0080;
-        }
-
         .qr-generator button {
-            padding: 12px 30px;
+            padding: 10px 25px;
             background-color: #28a745;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
             margin-top: 10px;
-            font-size: 18px;
+            font-size: 16px;
             transition: background-color 0.3s;
         }
 
@@ -127,7 +122,7 @@
 
         /* QR Code Display */
         .qr-code-container {
-            margin-top: 30px;
+            margin-top: 20px;
             display: inline-block;
             position: relative;
         }
@@ -135,22 +130,22 @@
         .qr-code-container canvas {
             border: 1px solid #ddd;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
             max-width: 100%;
         }
 
         /* Actions after QR Generation */
         #qr-actions {
             display: none;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         #download-btn,
         #view-btn {
             background-color: #28a745;
             color: white;
-            padding: 12px 30px;
-            margin: 10px;
+            padding: 10px 25px;
+            margin: 8px;
             border-radius: 5px;
             text-decoration: none;
         }
@@ -166,7 +161,7 @@
             font-weight: bold;
             color: red;
             display: none;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         /* Loading indicator */
@@ -175,7 +170,7 @@
             color: #ff0080;
             font-size: 20px;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         /* Footer */
@@ -184,19 +179,34 @@
             color: white;
             padding: 20px;
             text-align: center;
+            font-size: 14px;
         }
 
         footer .social-links a {
             color: #fff;
-            margin: 0 10px;
+            margin: 0 8px;
             text-decoration: none;
         }
 
         footer .social-links a:hover {
             color: #ffd700;
         }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .qr-generator {
+                padding: 20px;
+            }
+
+            .qr-generator h2 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
-    <script data-cfasync="false" src="/sw.js"></script>
 </head>
 
 <body>
@@ -240,7 +250,7 @@
 
         <div id="qr-actions">
             <a id="download-btn" href="#" download="qr-code.png">Descargar QR</a>
-            <a id="view-btn" href="#" target="_blank">Ver en Pantalla Completa</a>
+            <a id="view-btn" href="#" target="_blank" onclick="viewQRCodeFullScreen()">Ver en Pantalla Completa</a>
         </div>
 
         <p id="error-message">Hubo un error al generar el código QR.</p>
@@ -250,9 +260,9 @@
         <div class="footer-content">
             <p>&copy; 2024 QR Generator. Todos los derechos reservados.</p>
             <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
+                <a href="https://htmlvisor.github.io" target="_blank">Visualizador HTML</a>
+                <a href="https://youlinks.github.io" target="_blank">Enlaces Útiles</a>
+                <a href="https://pylarphylaxin.github.io" target="_blank">Analizador de URLs</a>
             </div>
         </div>
     </footer>
@@ -264,39 +274,40 @@
                 QRCode.toCanvas(data, {
                     width: qrSize,
                     height: qrSize,
-                    color: { dark: qrColor, light: '#ffffff' }
+                    color: { dark: qrColor, light: "#FFFFFF" }
                 }, (error, canvas) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        resolve(canvas);
-                    }
+                    if (error) reject(error);
+                    else resolve(canvas);
                 });
             });
         }
 
-        // Manejo del formulario de QR
+        function viewQRCodeFullScreen() {
+            const qrCanvas = document.querySelector("#qr-code-container canvas");
+            if (qrCanvas) {
+                const image = qrCanvas.toDataURL("image/png");
+                const newWindow = window.open("");
+                newWindow.document.write(`<img src="${image}" style="width:100%; height:100%; object-fit:contain;">`);
+            }
+        }
+
         document.getElementById('qr-form').addEventListener('submit', function (e) {
             e.preventDefault();
-
             const inputText = document.getElementById('input-text').value.trim();
             const qrType = document.getElementById('qr-type').value;
             const qrColor = document.getElementById('qr-color').value;
             const qrSize = parseInt(document.getElementById('qr-size').value);
             const qrCodeContainer = document.getElementById('qr-code-container');
             const downloadButton = document.getElementById('download-btn');
-            const viewButton = document.getElementById('view-btn');
             const errorMessage = document.getElementById('error-message');
             const qrActions = document.getElementById('qr-actions');
             const loadingMessage = document.getElementById('loading');
 
-            // Limpiar el estado previo
             errorMessage.style.display = 'none';
             qrCodeContainer.innerHTML = '';
             qrActions.style.display = 'none';
             loadingMessage.style.display = 'block';
 
-            // Validación de la entrada
             if (!inputText) {
                 errorMessage.style.display = 'block';
                 errorMessage.textContent = 'Por favor, ingresa un valor válido.';
@@ -304,24 +315,19 @@
                 return;
             }
 
-            // Formatear entrada según el tipo de QR
             let data = inputText;
             if (qrType === 'email') data = `mailto:${inputText}`;
             else if (qrType === 'social') data = `https://www.${inputText}.com`;
             else if (qrType === 'image') data = `http://example.com/${inputText}.jpg`;
 
-            // Generar el QR
             generateQRCode(data, qrSize, qrColor)
                 .then(canvas => {
-                    // Mostrar QR y botones
                     qrCodeContainer.appendChild(canvas);
                     downloadButton.href = canvas.toDataURL('image/png');
-                    viewButton.href = canvas.toDataURL('image/png');
                     qrActions.style.display = 'block';
                     loadingMessage.style.display = 'none';
                 })
                 .catch(error => {
-                    // Mostrar error si algo falla
                     loadingMessage.style.display = 'none';
                     errorMessage.style.display = 'block';
                     errorMessage.textContent = 'Hubo un error al generar el código QR.';

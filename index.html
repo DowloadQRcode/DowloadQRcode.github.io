@@ -1,265 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Página para agregar y descubrir enlaces interesantes">
-  <meta name="author" content="Tu Nombre">
-  <meta name='admaven-placement' content='Bqdr6rTgF'> 
-  <script data-cfasync="false" src="/sw.js"></script>
-  <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1117845"></script>
-  <title>Agregar Enlaces - Página Profesional</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* Estilos generales y fondo de imagen */
-    body {
-      font-family: 'Arial', sans-serif;
-      color: #ffffff;
-      background-image: url('https://img.pikbest.com/wp/202408/outer-space-galactic-backdrop-of-twinkling-stars-in_9908289.jpg!w700wp');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Sombreado en todo el contenido para mejor legibilidad */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-    }
-
-    /* Encabezado */
-    header {
-      text-align: center;
-      background-color: rgba(0, 123, 255, 0.8);
-      color: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      margin: 20px auto;
-      width: 80%;
-    }
-    
-    h1 {
-      font-size: 36px;
-    }
-    
-    p {
-      font-size: 18px;
-      margin-top: 10px;
-    }
-
-    /* Filtro de categorías y búsqueda */
-    .filters {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .filters select, .filters input {
-      padding: 12px;
-      font-size: 16px;
-      margin: 10px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-    }
-
-    /* Sección de enlaces */
-    .enlaces-section ul {
-      list-style-type: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    
-    .enlaces-section li {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      padding: 20px;
-      width: 300px;
-      color: #fff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .enlaces-section li:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-    }
-
-    .enlaces-section h2 {
-      text-align: center;
-      color: #fff;
-      font-size: 28px;
-      margin-bottom: 30px;
-    }
-
-    .enlaces-section li h3 {
-      font-size: 22px;
-      color: #FFD700;
-      margin-bottom: 10px;
-    }
-
-    .enlaces-section li p {
-      font-size: 16px;
-      color: #ddd;
-    }
-
-    .enlaces-section li a {
-      text-decoration: none;
-      color: #00BFFF;
-      font-size: 18px;
-      margin-top: 10px;
-      display: block;
-    }
-
-    /* Botones de compartir */
-    .share-buttons {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .share-buttons a {
-      background-color: #007BFF;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      margin: 0 10px;
-      font-size: 18px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-    .share-buttons a:hover {
-      background-color: #0056b3;
-    }
-
-    /* Botón de la flecha */
-    .toggle-form-btn {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background-color: #007BFF;
-      color: white;
-      padding: 15px;
-      border-radius: 50%;
-      font-size: 24px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-      z-index: 1000;
-      transition: background-color 0.3s;
-    }
-
-    .toggle-form-btn:hover {
-      background-color: #0056b3;
-    }
-
-    /* Formulario deslizante */
-    #formulario {
-      position: fixed;
-      right: -500px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(255, 255, 255, 0.9);
-      width: 500px;
-      height: 80%;
-      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-      padding: 20px;
-      border-radius: 10px;
-      transition: right 0.5s ease;
-    }
-
-    #formulario iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Mostrar el formulario */
-    #formulario.open {
-      right: 0;
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generador de Códigos QR profesionales para enlaces, redes sociales, correos electrónicos, imágenes y más.">
+    <meta name="author" content="Tu Nombre">
+    <title>Generador de Códigos QR Profesional</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
-<!-- Notificación -->
-<div id="notification" class="notification"></div>
-                                            
-<header>
-  <h1>¡Bienvenido a la Página de Enlaces!</h1>
-  <p>Descubre recursos interesantes y comparte los tuyos. ¡Únete y participa!</p>
-</header>
+    <header>
+        <nav class="navbar">
+            <div class="logo">QR Generator</div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#features">Características</a></li>
+                <li><a href="#about">Acerca de</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- Filtro de categorías y búsqueda -->
-<section class="filters">
-  <input type="text" id="search-bar" placeholder="Buscar entre enlaces..." oninput="filterLinks()">
-  <select id="category-filter" onchange="filterLinks()">
-    <option value="">Filtrar por categoría</option>
-    <option value="juegos">Juegos</option>
-    <option value="educacion">Educación</option>
-    <option value="herramientas">Herramientas</option>
-  </select>
-</section>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Genera Códigos QR de Forma Profesional</h1>
+            <p>Genera códigos QR para enlaces, redes sociales, correos electrónicos, imágenes y más en pocos clics.</p>
+            <button onclick="document.getElementById('qr-generator').scrollIntoView()">Generar Código QR</button>
+        </div>
+    </section>
 
-<!-- Enlaces Destacados -->
-<section class="enlaces-section">
- <ul id="enlaces-list">
-  <li class="juegos">
-    <h3><a href="https://tulogica.github.io" target="_blank">Inscripciones Guerras de Clanes</a></h3>
-    <p>Un portal donde puedes registrarte para participar en guerras de clanes. ¡Prepárate para la batalla!</p>
-  </li>
-  <li class="educacion">
-    <h3><a href="https://pylarphylaxin.github.io" target="_blank">Análisis de URL</a></h3>
-    <p>Una herramienta útil para analizar URLs y verificar su seguridad y contenido.</p>
-  </li>
-  <!-- Espacio para 10 enlaces adicionales -->
-</ul>
-</section>
+    <section id="qr-generator" class="qr-generator">
+        <h2>Crea tu Código QR</h2>
+        <form id="qr-form">
+            <input type="text" id="input-text" placeholder="Ingresa tu URL o dato" required>
+            <select id="qr-type">
+                <option value="url">Enlace Web</option>
+                <option value="email">Correo Electrónico</option>
+                <option value="text">Texto Personalizado</option>
+                <option value="social">Redes Sociales</option>
+                <option value="image">Imagen</option>
+            </select>
+            <button type="submit">Generar QR</button>
+        </form>
+        <div id="qr-code-container"></div>
+    </section>
 
-<button id="toggle-theme" onclick="toggleTheme()">🌓</button>
-  
-<!-- Botón para abrir el formulario -->
-<div class="toggle-form-btn" onclick="toggleForm()">
-  <i class="fas fa-arrow-right"></i>
-</div>
+    <section id="features" class="features">
+        <h2>Características</h2>
+        <div class="feature">
+            <h3>Generador de Códigos QR Flexibles</h3>
+            <p>Genera QR para enlaces web, correos, textos, redes sociales y mucho más.</p>
+        </div>
+        <div class="feature">
+            <h3>Interfaz Intuitiva</h3>
+            <p>Una interfaz limpia y fácil de usar, sin complicaciones.</p>
+        </div>
+        <div class="feature">
+            <h3>Sin API Externa</h3>
+            <p>Todo el procesamiento se hace dentro de la página, sin necesidad de dependencias externas.</p>
+        </div>
+    </section>
 
-<!-- Formulario deslizante -->
-<div id="formulario">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSceC13g3AqDNA21OS1FW0RZoEHD8Wf8ARzEZPKVp1BGxZ91Eg/viewform?embedded=true" width="640" height="965">Cargando...</iframe>
-</div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 QR Generator. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
 
-<script>
-  // Evento para ejecutar funciones después de cargar el DOM
-  document.addEventListener('DOMContentLoaded', function() {
-    // Alternar visibilidad del formulario
-    function toggleForm() {
-      const form = document.getElementById('formulario');
-      form.classList.toggle('open');
-    }
-    
-    // Filtrar enlaces
-    function filterLinks() {
-      const searchQuery = document.getElementById('search-bar').value.toLowerCase();
-      const category = document.getElementById('category-filter').value;
-      const links = document.querySelectorAll('#enlaces-list li');
-      
-      links.forEach(link => {
-        const title = link.querySelector('h3').textContent.toLowerCase();
-        const matchesSearch = title.includes(searchQuery);
-        const matchesCategory = category === '' || link.classList.contains(category);
-        link.style.display = matchesSearch && matchesCategory ? '' : 'none';
-      });
-    }
-    
-    // Iniciar funciones en el documento
-    document.querySelector('.toggle-form-btn').onclick = toggleForm;
-    window.filterLinks = filterLinks;
-  });
-</script>
+    <script src="app.js"></script>
 </body>
 </html>
